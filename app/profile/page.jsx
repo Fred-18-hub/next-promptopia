@@ -12,6 +12,7 @@ const ProfilePage = () => {
   const router = useRouter();
 
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,6 +20,7 @@ const ProfilePage = () => {
       const data = await response.json();
 
       setPosts(data);
+      setIsLoading(false);
     };
 
     session?.user.id && fetchPosts();
@@ -52,6 +54,7 @@ const ProfilePage = () => {
       desc="Welcome to your personalized profile page. 
         Share your exceptional prompts and inspire others with the power of your imagination."
       data={posts}
+      isLoading={isLoading}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />

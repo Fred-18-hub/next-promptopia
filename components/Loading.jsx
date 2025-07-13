@@ -10,7 +10,6 @@ const Loading = () => {
         height={30}
         alt="Loader svg"
       />
-      <p className="text-2xl z-10">Loading</p>
     </>
   );
 };

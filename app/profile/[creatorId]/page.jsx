@@ -12,6 +12,7 @@ const OtherProfilesPage = ({ params }) => {
   const userName = searchParams.get("username");
 
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -19,6 +20,7 @@ const OtherProfilesPage = ({ params }) => {
       const data = await response.json();
 
       setPosts(data);
+      setIsLoading(false);
     };
 
     userId && fetchPosts();
@@ -30,6 +32,7 @@ const OtherProfilesPage = ({ params }) => {
       desc={`Welcome to ${userName}'s personalized profile page. 
         Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination.`}
       data={posts}
+      isLoading={isLoading}
     />
   );
 };
